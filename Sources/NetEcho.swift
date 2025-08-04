@@ -75,6 +75,11 @@ func runServer(on port: UInt16) async throws {
 
     // Start listening. Use GCD queue.
     listener.start(queue: .global())
+
+    try await withUnsafeThrowingContinuation { (_: UnsafeContinuation<Never, Error>) in 
+    // This continuation is intentionally never resumed
+    // This suspends the task indefinitely without blocking a thread
+    }
 }
 
 @available(macOS 10.15, *)
@@ -155,10 +160,6 @@ func runMain() async {
         switch args.mode {
         case .server(let port): 
             try await runServer(on: port)
-            // Run forever with periodic wakeups
-            while true {
-                try await Task.sleep(for: .seconds(3600)) // Wake up every hour
-            }
         case .client(let host, let port): 
             try await runClient(to: host, port: port)
         }

@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:NetEcho}",
+            "name": "Debug NetEcho",
+            "program": "${workspaceFolder:NetEcho}/.build/debug/NetEcho",
+            "preLaunchTask": "swift: Build Debug NetEcho"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:NetEcho}",
+            "name": "Release NetEcho",
+            "program": "${workspaceFolder:NetEcho}/.build/release/NetEcho",
+            "preLaunchTask": "swift: Build Release NetEcho"
+        }
+    ]
+}
